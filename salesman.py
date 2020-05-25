@@ -26,11 +26,11 @@ BUILDING_SIZE = (20, 20)
 HOME_SIZE = (30, 30)
 START_POINT = (100, 100)
 
-SALESMAN_NUM = 100 #must be mutilple of 4
-BUILDING_NUM = 8
+SALESMAN_NUM = 160 #must be mutilple of 4
+BUILDING_NUM = 12
 ELITE_NUM = int(SALESMAN_NUM/2)
 P_MUTATION = 0.005
-GENERATION = 100
+GENERATION = 1000
 
 class Salesman():
     def __init__(self):
@@ -201,8 +201,8 @@ def calculate_angle(a, b):
 
 def export_to_csv(SALESMAN):
     df_gene = pd.DataFrame(SALESMAN.genes)
-    df_total_distance = pd.DataFrame(SALESMAN.history_total_distance)
-    df_shortest = pd.DataFrame(SALESMAN.history_shortest)
+    df_total_distance = pd.DataFrame(SALESMAN.history_total_distance, columns=['total'])
+    df_shortest = pd.DataFrame(SALESMAN.history_shortest, columns=['shortest'])
     df_gene.to_csv("gene.csv")
     df_total_distance.to_csv("total_distance.csv")
     df_shortest.to_csv("shortest.csv")
